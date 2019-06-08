@@ -40,7 +40,8 @@ export default {
 
 .about
   border solid #414141 6px
-  min-height 98.2vh
+  min-height 98.7vh
+  height 100%
   color #414141
 
 </style>

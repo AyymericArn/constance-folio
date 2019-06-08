@@ -6,6 +6,7 @@ import store from './store'
 // reset styles
 import '@/assets/reset.css'
 
+Vue.prototype.scrollBy = window.scrollBy
 Vue.config.productionTip = false
 
 new Vue({

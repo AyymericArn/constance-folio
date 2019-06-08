@@ -12,6 +12,11 @@ export default {
   name: 'home',
   components: {
     Navigation
+  },
+  beforeRouteLeave (to, from, next) {
+    setTimeout(() => {
+      next()
+    }, 500)
   }
 }
 </script>

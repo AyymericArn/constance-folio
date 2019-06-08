@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Projects
+    title="UX/UI Design"
+    primaryColor="#6B6991"
+    :projects="projects"
+  />
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Projects from '@/components/Projects/Projects.vue'
 
 export default {
-  name: 'home',
+  name: 'motion',
   components: {
-    HelloWorld
+    Projects
+  },
+  data () {
+    return {
+      projects: [
+        {
+          title: 'NoDisk Records',
+          caption: 'Association - 2019'
+        },
+        {
+          title: 'Teaser',
+          caption: 'Application - 2019'
+        }
+      ]
+    }
   }
 }
 </script>

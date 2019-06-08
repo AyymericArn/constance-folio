@@ -16,6 +16,11 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
+      // beforeEnter: (to, from, next) => {
+      //   setTimeout(() => {
+      //     next()
+      //   }, 300)
+      // },
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -24,17 +29,43 @@ export default new Router({
     {
       path: '/motion',
       name: 'motion',
-      component: () => import(/* webpackChunkName: "about" */ './views/Motion.vue')
+      // beforeEnter: (to, from, next) => {
+      //   setTimeout(() => {
+      //     next()
+      //   }, 300)
+      // },
+      component: () => import(/* webpackChunkName: "motion" */ './views/Motion.vue')
+    },
+    {
+      path: '/project',
+      name: 'project',
+      props: true,
+      beforeEnter: (to, from, next) => {
+        setTimeout(() => {
+          next()
+        }, 300)
+      },
+      component: () => import(/* webpackChunkName: "project" */ './views/Project.vue')
     },
     {
       path: '/ui',
       name: 'ui',
-      component: () => import(/* webpackChunkName: "about" */ './views/Ui.vue')
+      // beforeEnter: (to, from, next) => {
+      //   setTimeout(() => {
+      //     next()
+      //   }, 300)
+      // },
+      component: () => import(/* webpackChunkName: "ui" */ './views/Ui.vue')
     },
     {
       path: '/print',
       name: 'print',
-      component: () => import(/* webpackChunkName: "about" */ './views/Print.vue')
+      // beforeEnter: (to, from, next) => {
+      //   setTimeout(() => {
+      //     next()
+      //   }, 300)
+      // },
+      component: () => import(/* webpackChunkName: "print" */ './views/Print.vue')
     },
     {
       path: '*',
