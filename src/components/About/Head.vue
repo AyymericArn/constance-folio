@@ -1,23 +1,28 @@
 <template>
     <div class="title">
         <h1>Hello, I'm Constance !</h1>
-        <svg width="44" height="55" viewBox="0 0 44 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 17C8.66667 17 4.11111 23.749 2 27.1235C4.22222 30.3333 8.33333 37 22 37C35.6667 37 39.7778 30.4979 42 27.1235C39.8889 23.749 32.9333 17 22 17Z" stroke="#414141" stroke-width="2.5"/>
-        <circle cx="22" cy="27" r="9.75" stroke="#414141" stroke-width="2.5"/>
-        <circle cx="22" cy="27" r="2.75" stroke="#414141" stroke-width="2.5"/>
-        <rect x="21" width="2" height="12" rx="1" fill="#595959"/>
-        <rect x="6" y="7.66797" width="2" height="8" rx="1" transform="rotate(-19.5101 6 7.66797)" fill="#595959"/>
-        <rect x="36.0077" y="7" width="2" height="8" rx="1" transform="rotate(19.51 36.0077 7)" fill="#595959"/>
-        <rect width="2" height="12" rx="1" transform="matrix(1 0 0 -1 21 54.7914)" fill="#595959"/>
-        <rect width="2.07664" height="8.30655" rx="1.03832" transform="matrix(0.942583 0.333973 0.333973 -0.942583 5.38895 46.8296)" fill="#595959"/>
-        <rect width="2.07664" height="8.30655" rx="1.03832" transform="matrix(0.942583 -0.333971 -0.333971 -0.942583 36.5465 47.5232)" fill="#595959"/>
-        </svg>
+        <router-link :to="{name: 'home'}">
+            <div ref="eye" class="eye"></div>
+        </router-link>
     </div>
 </template>
 
 <script>
+import bodymovin from 'lottie-web'
+import anim from '@/assets/eye.json'
+
 export default {
-  name: 'Section'
+  name: 'Section',
+  mounted () {
+    this.animation = bodymovin.loadAnimation({
+      container: this.$refs.eye,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: anim
+    })
+    this.$refs.eye.childNodes[0].style = `width: 100%; height: 100%; transform: scale(1.7) translateY(-10px)`
+  }
 }
 </script>
 
@@ -33,6 +38,11 @@ export default {
     padding 40px 30px
     box-sizing border-box
     font-family 'Volkhov'
+
+    .eye
+        height 80px
+        width 80px
+        overflow hidden
 
     svg
         min-width 44px

@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div ref="about" class="about">
     <Head/>
     <Section title="About Me" color="red">
       I am Constance Devanne, currently a student at HETIC and freelance since April 2018. Passionate about digital, I work every day to find solutions to the problems encountered through design.
@@ -26,12 +26,25 @@
 <script>
 import Head from '@/components/About/Head.vue'
 import Section from '@/components/About/Section.vue'
+import { TweenLite } from 'gsap'
 
 export default {
   name: 'about',
   components: {
     Head,
     Section
+  },
+  mounted () {
+    TweenLite.fromTo(
+      this.$refs.about,
+      0.2,
+      {
+        opacity: 0
+      },
+      {
+        opacity: 1
+      }
+    )
   }
 }
 </script>

@@ -37,7 +37,6 @@ export default {
       autoplay: true,
       animationData: anim
     })
-    console.log(this.$refs.eye.childNodes[0])
     this.$refs.eye.childNodes[0].style = `width: 100%; height: 100%; transform: scale(1.7)`
   }
 }
@@ -62,6 +61,7 @@ div.title
       height 80px
       width 80px
       margin auto
+      overflow hidden
 
       svg
         transform scale(1.5)

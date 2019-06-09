@@ -1,5 +1,5 @@
 <template>
-  <div :style="`border-color: ${primaryColor}`" class="project">
+  <div :style="`border-color: ${primaryColor}`" class="project" ref="projects">
     <div ref="transitionnerin" :style="`background-color: ${primaryColor}`" class="transitionnerin"></div>
     <div ref="transitionnerout" :style="`background-color: ${primaryColor}`" class="transitionnerout"></div>
     <Headd :title="title" frompath="home"/>
@@ -32,6 +32,7 @@
             :title="project.title"
             :caption="project.caption"
             :primaryColor="primaryColor"
+            :src="project.src"
             />
         </router-link>
 
@@ -44,7 +45,7 @@
 // @ is an alias to /src
 import Headd from '@/components/Shared/Headd.vue'
 import ProjectThumb from '@/components/Projects/ProjectThumb.vue'
-import { TweenLite, TimelineLite } from 'gsap'
+import { TweenLite } from 'gsap'
 
 export default {
   name: 'motion',
@@ -76,35 +77,6 @@ export default {
         }
       )
     }
-  },
-  mounted () {
-    const tl = new TimelineLite()
-    tl.add('label')
-    tl.add(
-      TweenLite.to(
-        this.$refs.transitionnerin,
-        0.3,
-        {
-          opacity: 0
-        }
-      ), '+=0.3'
-    )
-
-    tl.add('label2', '+=0.3')
-
-    tl.add(
-      TweenLite.to(
-        this.$refs.transitionnerin,
-        0.3,
-        {
-          display: 'none'
-        }), 'label2'
-    )
-    // setTimeout(() => {
-    //   console.log('pgddute')
-    //   tl.play()
-    // }, 600)
-    tl.play()
   }
 }
 </script>
@@ -121,10 +93,11 @@ export default {
 
   .transitionnerin
       position absolute
-      left 0
-      top 0
-      height 100vh
-      width 100vw
+      left -25vw
+      top -25vw
+      height 165vw
+      width 165vw
+      border-radius 50%
       z-index 10
 
   .transitionnerout

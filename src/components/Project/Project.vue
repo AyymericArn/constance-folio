@@ -1,6 +1,7 @@
 <template>
     <div @resize="resize" :style="`border-color: ${primaryColor}`" class="project_wrapper">
-        <div ref="transitionner" :style="`background-color: ${primaryColor}`" class="transitionner"></div>
+        <div ref="transitionnerin" :style="`background-color: ${primaryColor}`" class="transitionnerin"></div>
+        <div ref="transitionnerout" :style="`background-color: ${primaryColor}`" class="transitionnerout"></div>
         <!-- the eye in the sky -->
         <!-- <router-link :to="{name: this.$route.params.fromPath}">
             <img :src="Eye" alt="Constance Devanne">
@@ -69,7 +70,7 @@ export default {
     this.resize()
     const tl = new TimelineLite()
     tl.add(TweenLite.to(
-      this.$refs.transitionner,
+      this.$refs.transitionnerin,
       0.2,
       {
         opacity: 0
@@ -77,7 +78,7 @@ export default {
     ))
     tl.add(
       TweenLite.to(
-        this.$refs.transitionner,
+        this.$refs.transitionnerin,
         0.3,
         {
           display: 'none'
@@ -100,12 +101,22 @@ export default {
     display flex
     flex-direction column
 
-    .transitionner
+    .transitionnerin
         position absolute
         left 0
         top 0
         height 100vh
         width 100vw
+        z-index 10
+
+    .transitionnerout
+        position absolute
+        left 125vw
+        top 125vw
+        height 0
+        width 0
+        z-index 10
+        border-radius 50%
 
     // a
     //     width: min-content;

@@ -13,6 +13,8 @@
 
 <script>
 import Project from '@/components/Project/Project.vue'
+import { TweenLite } from 'gsap'
+
 export default {
   name: 'Project-view',
   components: {
@@ -29,6 +31,17 @@ export default {
     primaryColor: String
   },
   beforeRouteLeave (to, from, next) {
+    TweenLite.to(
+      this.$children[0].$refs.transitionnerout,
+      0.2,
+      {
+        transformOrigin: 'bottom right',
+        height: '165vw',
+        width: '165vw',
+        left: '-25vw',
+        top: '-25vw'
+      }
+    )
     setTimeout(() => {
       next()
     }, 300)
